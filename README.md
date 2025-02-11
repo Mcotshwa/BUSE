@@ -1,0 +1,1 @@
+The app was created using the following frameworks. For the front end, it's angular's ionic using nodejs. For the backend its .netcore web api using visual studio. Then for the db is sql using microsoft sql server
