@@ -1,0 +1,6 @@
+@BuseBack_HostAddress = http://localhost:5020
+
+GET {{BuseBack_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
