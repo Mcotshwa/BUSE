@@ -1,6 +1,7 @@
 ﻿using BuseBack.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,15 +27,34 @@ namespace BuseBack.Controllers
 
         // GET api/<TransactionController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Transanction>> Get(int id)
         {
-            return "value";
+            var transaction = await _context.Transanctions.FindAsync(id);
+
+            if(transaction == null)
+            {
+                return NotFound();
+            }
+            return transaction;
         }
 
         // POST api/<TransactionController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("Post")]
+        public async Task<ActionResult<IEnumerable<Transanction>>> PostTransaction(Transanction transanction)
         {
+            transanction.TransactionNo = 0;
+            _context.Transanctions.Add(transanction);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+
+                return Forbid(e.Message);
+            }
+
+            return CreatedAtAction("GetTransaction",new {id = transanction.TransactionNo});
         }
 
         // PUT api/<TransactionController>/5
