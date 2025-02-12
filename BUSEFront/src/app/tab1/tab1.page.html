@@ -13,16 +13,17 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card>
+  <ion-card *ngFor="let transaction of transactionsList">
     <ion-card-header>
-      <ion-card-title>Transaction Title</ion-card-title>
-      <ion-card-subtitle>Transaction description</ion-card-subtitle>
+      <ion-card-title> Transaction Number: {{transaction.transactionNo}} <br> <br>
+        Description: {{transaction.transactionDescription}}</ion-card-title>
+      <ion-card-subtitle>Amount US$:{{transaction.transactionAmount}}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      Amount: US$3.00  Date: 2023/01/02 02:14
+       Date: {{transaction.transactionDate}}
     </ion-card-content>
   </ion-card>
 
-  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  
 </ion-content>

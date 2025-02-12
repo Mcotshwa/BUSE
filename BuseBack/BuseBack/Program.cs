@@ -1,7 +1,28 @@
 using BuseBack.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
+
+
+//cor origin var
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+                          policy =>
+                          {
+                              Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder corsPolicyBuilder = policy.WithOrigins("*")
+                              .AllowAnyHeader()
+                               .AllowAnyMethod()
+                              ;
+                              //WithOrigins("http://localhost:8100"
+                              //                    )
+                              //                    .AllowAnyHeader()
+                              //                    .AllowAnyMethod();
+                          });
+});
 
 // Add services to the container.
 
@@ -14,6 +35,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BuseContext>(options=>
      options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//add cors
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +49,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

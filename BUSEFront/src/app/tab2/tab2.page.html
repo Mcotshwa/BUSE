@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Add a Transaction
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,39 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Add a Transaction</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  
+
+  <form > 
+    <ion-list>
+      <ion-item>
+        <ion-input [(ngModel)]="Description" name="Description" id="Description"  label-placement="floating"  label="Enter Transaction Description"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input [(ngModel)]="Amount" id="Amount" name="Amount" label="Amount"  label-placement="floating"  type="number"></ion-input>
+      </ion-item>
+    
+      
+    
+      <ion-item>
+        Date:   
+        <ion-datetime-button datetime="Datetime"></ion-datetime-button>
+    
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime name="Datetime" [(ngModel)]="Datetime" id="Datetime"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+      </ion-item>
+    
+      
+    </ion-list>
+
+    
+  </form>
+  <ion-button (click)="addTransaction()" >Add</ion-button>
 </ion-content>

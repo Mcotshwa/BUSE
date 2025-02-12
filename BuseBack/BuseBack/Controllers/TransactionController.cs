@@ -1,4 +1,5 @@
 ﻿using BuseBack.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,6 +8,7 @@ using System;
 
 namespace BuseBack.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class TransactionController : ControllerBase
@@ -19,10 +21,12 @@ namespace BuseBack.Controllers
             _context = context;
         }
         // GET: api/<TransactionController>
+        [EnableCors("MyAllowSpecificOrigins")]
         [HttpGet]
         public async  Task<ActionResult<IEnumerable<Transanction>>> GetTransactions()
         {
-            return await _context.Transanctions.ToListAsync();
+            return Ok
+                (await _context.Transanctions.ToListAsync());
         }
 
         // GET api/<TransactionController>/5
@@ -39,7 +43,7 @@ namespace BuseBack.Controllers
         }
 
         // POST api/<TransactionController>
-        [HttpPost("Post")]
+        [HttpPost]
         public async Task<ActionResult<IEnumerable<Transanction>>> PostTransaction(Transanction transanction)
         {
             transanction.TransactionNo = 0;
@@ -54,7 +58,7 @@ namespace BuseBack.Controllers
                 return Forbid(e.Message);
             }
 
-            return CreatedAtAction("GetTransaction",new {id = transanction.TransactionNo});
+            return Ok("Transaction added successfully");
         }
 
         // PUT api/<TransactionController>/5
