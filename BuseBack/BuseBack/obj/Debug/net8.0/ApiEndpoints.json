@@ -121,6 +121,22 @@
     ]
   },
   {
+    "ContainingType": "BuseBack.Controllers.TransactionController",
+    "Method": "LogIn",
+    "RelativePath": "api/Transaction/LogIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "logIn",
+        "Type": "BuseBack.ViewModels.LogInVM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BuseBack.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

@@ -1,4 +1,5 @@
 ﻿using BuseBack.Models;
+using BuseBack.ViewModels;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +21,24 @@ namespace BuseBack.Controllers
         {
             _context = context;
         }
+
+        // POST api/<TransactionController>/LogIn
+        [HttpPost("LogIn")]
+        public object LogIn(LogInVM logIn)
+        {
+            if (logIn.Name == "test" && logIn.Pass == "Password")
+            {
+                return Ok();
+            }
+            else 
+            {
+                return StatusCode(500);
+            }
+            
+        }
+
         // GET: api/<TransactionController>
-        [EnableCors("MyAllowSpecificOrigins")]
+        ///[EnableCors("MyAllowSpecificOrigins")]
         [HttpGet]
         public async  Task<ActionResult<IEnumerable<Transanction>>> GetTransactions()
         {
@@ -58,7 +75,7 @@ namespace BuseBack.Controllers
                 return Forbid(e.Message);
             }
 
-            return Ok("Transaction added successfully");
+            return Ok();
         }
 
         // PUT api/<TransactionController>/5

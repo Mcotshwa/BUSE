@@ -15,13 +15,16 @@ export class TransactionServiceService {
   getTransactions(){
     return this.http.get<TransactionInterface[]>(this.server,this.params);
   }
+  logIn(LogIn){
+    console.log(LogIn, "Login at service");
+    
+    return this.http.post(`${this.server}/LogIn`,LogIn);
+  }
+
 
   addTransaction(Transaction){
-    console.log(Transaction);
-    // let t:AddTransactionInterface={TransactionDescription:Transaction.Description,
-    //   TransactionNo:0,TransactionAmount:Transaction.Amount,
-    //   TransactionDate:Transaction.Datetime,
-    // }
+    console.log(Transaction, "Transaction at service");
+    
     return this.http.post<TransactionInterface>(this.server,Transaction);
   }
 

@@ -1,3 +1,42 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        LogIn
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">LogIn</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    
+  
+    <form > 
+      <ion-list>
+        <ion-item>
+          <ion-input [(ngModel)]="Name" name="name"   label-placement="floating"  label="Enter your username"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input [(ngModel)]="Pass"  name="pass" label="Password"  label-placement="floating" ></ion-input>
+        </ion-item>
+      
+        
+      
+        
+      
+        
+      </ion-list>
+  
+      
+    </form>
+    <ion-button (click)="logIn()" >Add</ion-button>
+  </ion-content>
+  
+  <!-- <ion-router-outlet></ion-router-outlet> -->
 </ion-app>
