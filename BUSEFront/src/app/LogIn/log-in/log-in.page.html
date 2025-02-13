@@ -14,11 +14,17 @@
   <form > 
     <ion-list>
       <ion-item>
-        <ion-input [(ngModel)]="Name" name="name"   label-placement="floating"  label="Enter your username"></ion-input>
+        <ion-input [(ngModel)]="Name" type="password" name="name"  
+         label-placement="floating"  label="Enter your username">
+         <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
       </ion-item>
     
       <ion-item>
-        <ion-input [(ngModel)]="Pass"  name="pass" label="Password"  label-placement="floating" ></ion-input>
+        <ion-input [(ngModel)]="Pass" type="password" name="pass"
+         label="Password"  label-placement="floating" >
+         <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
       </ion-item>
     
       
