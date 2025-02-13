@@ -59,6 +59,8 @@ npm install
 
 And it will install the node module for you, then run ionic serve again and it open.
 
+Now your whole system is running and you can start testing and admiring it.
+
 
 
 
