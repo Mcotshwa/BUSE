@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { async } from 'rxjs';
 import { TransactionServiceService } from 'src/app/Services/transaction-service.service';
 
 @Component({
@@ -12,7 +15,9 @@ export class LogInPage implements OnInit {
   Pass:any;
   Name:any;
 
-  constructor(private service:TransactionServiceService, public router:Router) { }
+  constructor(private service:TransactionServiceService, public router:Router,
+    private toastCtrl: ToastController
+  ) { }
 
   ngOnInit() {
   }
@@ -31,7 +36,7 @@ export class LogInPage implements OnInit {
       this.service.logIn(L).subscribe(res=>
         {this.router.navigate(['tabs']),
           console.log(res, "LogIn Successful")
-          
+          alert('LogIn Successful')
         },
         err=> {
           this.Pass=null;
@@ -45,6 +50,7 @@ export class LogInPage implements OnInit {
       this.Name=null;
       alert('Form not valid')
     }
+    
     
 
 

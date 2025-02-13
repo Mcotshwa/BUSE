@@ -34,7 +34,20 @@ export class Tab2Page {
       let T:any={TransactionNo:0, TransactionDescription:this.Description,
         TransactionAmount:this.Amount, TransactionDate:this.Datetime
       }
-      this.service.addTransaction(T).subscribe(res=>console.log(res));
+      this.service.addTransaction(T).subscribe(res=>
+      {
+          
+        console.log(res, "Transaction Added Successfully")
+        
+        this.Description=null;
+        this.Amount=null;
+        alert('Transaction Added Successfully')
+      },
+      err=> {
+        this.Description=null;
+          this.Amount=null;
+        alert('Transaction Not Added')
+        console.log('error',err)});
     }
     else{
       alert('Form not valid')

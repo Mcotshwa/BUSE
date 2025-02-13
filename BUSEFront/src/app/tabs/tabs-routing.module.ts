@@ -21,21 +21,23 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
-        path: 'login',
-        loadChildren: () => import('../LogIn/log-in/log-in.module').then(m => m.LogInPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
       }
-    ]
+    ],
+    
   },
   {
     path: '',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('../LogIn/log-in/log-in.module').then(m => m.LogInPageModule)
+  },
+  
 ];
 
 @NgModule({
