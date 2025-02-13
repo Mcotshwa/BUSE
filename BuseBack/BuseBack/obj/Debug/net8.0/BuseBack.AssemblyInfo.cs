@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BuseBack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+874802c2475729eb2209c372c70c8a1572b29f6e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afaefc8aacd66378e49b036f65dad3028fe81fcb")]
 [assembly: System.Reflection.AssemblyProductAttribute("BuseBack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BuseBack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
